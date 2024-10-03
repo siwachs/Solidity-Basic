@@ -8,13 +8,17 @@ library PriceConverter {
 
     // Use chainlink feed data
     function getPrice() internal view returns (uint256) {
-        AggregatorV3Interface priceFeed = AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306);
-        (, int256 price,  , , ) = priceFeed.latestRoundData();
+        AggregatorV3Interface priceFeed = AggregatorV3Interface(
+            0x694AA1769357215DE4FAC081bf1f309aDC325306
+        );
+        (, int256 price, , , ) = priceFeed.latestRoundData();
 
         return uint256(price * 1e10); // Handle Decimals
     }
 
-    function getConversionRate(uint256 ethAmount) internal view returns(uint256) {
+    function getConversionRate(
+        uint256 ethAmount
+    ) internal view returns (uint256) {
         uint256 ethPrice = getPrice();
 
         // Handle Decimals because solidity does not handle decimals.
@@ -23,8 +27,10 @@ library PriceConverter {
         return ethAmountInUSD;
     }
 
-    function getVersion() internal view returns(uint256) {
-        AggregatorV3Interface priceFeed = AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306);
+    function getVersion() internal view returns (uint256) {
+        AggregatorV3Interface priceFeed = AggregatorV3Interface(
+            0x694AA1769357215DE4FAC081bf1f309aDC325306
+        );
         return priceFeed.version();
-    }  
+    }
 }

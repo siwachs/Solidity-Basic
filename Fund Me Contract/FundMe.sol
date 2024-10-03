@@ -3,27 +3,27 @@ pragma solidity ^0.8.26;
 
 import "./PriceConverter.sol";
 
+error NotOwner();
+
 contract FundMe {
     using PriceConverter for uint256;
 
     // Use Chainlink and oracle to convert USD to ETH
-    uint256 public minimumUSD;
+    uint256 public constant MINIMUM_USD = 1 * 1e18;
 
     address[] public funders;
     mapping(address => uint256) public addressToAmountFunded;
 
-    address public owner;
+    address public immutable i_owner;
 
     constructor() {
-        minimumUSD = 1 * 1e18;
-
         // Is going to be the owner who deploy this contract
-        owner = msg.sender;
+        i_owner = msg.sender;
     }
 
     function fund() public payable {
         require(
-            msg.value.getConversionRate() >= minimumUSD,
+            msg.value.getConversionRate() >= MINIMUM_USD,
             "Minimum 50USD need to for this transaction!"
         );
         funders.push(msg.sender);
@@ -64,7 +64,19 @@ contract FundMe {
     }
 
     modifier onlyOwner() {
-        require(msg.sender == owner, "Only owner can withdraw these ETH!");
+        // require(msg.sender == i_owner, "Only owner can withdraw these ETH!");
+
+        if (msg.sender != i_owner) revert NotOwner();
         _; // This symbol indicates where the rest of the function code will execute after the require statement
+    }
+
+    // What if instead of fund method user send ETH from a low level interaction
+    // Special Function Receive and Fallback in Solidity
+    receive() external payable {
+        fund();
+    }
+
+    fallback() external payable {
+        fund();
     }
 }
