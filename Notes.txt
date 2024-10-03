@@ -2,3 +2,5 @@ Solidity is sync language
 To Compile Solidity code in JS project we need solc-js yarn add solc
 
 yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o out Filename.sol
+
+ganache -> VM to run a Fake BLC
