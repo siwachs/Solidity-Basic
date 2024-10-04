@@ -4,3 +4,5 @@ To Compile Solidity code in JS project we need solc-js yarn add solc
 yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o out Filename.sol
 
 ganache -> VM to run a Fake BLC
+
+Ethers.js, Web3.js -> JS library to interact with ETH BLC
