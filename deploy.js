@@ -11,13 +11,13 @@ async function main() {
 
   const abi = JSON.parse(
     fs.readFileSync(
-      "./out/ethersSimpleStorage_FallbackExample_sol_FallbackExample.abi",
+      "./out/ethersSimpleStorage_SimpleStorage_sol_SimpleStorage.abi",
       "utf-8"
     )
   );
   const binary = fs
     .readFileSync(
-      "./out/ethersSimpleStorage_FallbackExample_sol_FallbackExample.bin",
+      "./out/ethersSimpleStorage_SimpleStorage_sol_SimpleStorage.bin",
       "utf-8"
     )
     .toString();
@@ -26,11 +26,11 @@ async function main() {
   const contractFactory = new ContractFactory(abi, binary, wallet);
   console.log("Deploying...");
 
-  const contract = await contractFactory.deploy({ gasLimit: 3000000 }); // Wait for contract to deploy
+  const contract = await contractFactory.deploy({ gasLimit: 5000000 }); // Wait for contract to deploy
   console.log("Contract = ", contract);
 
   // wait for one block to add during deployment
-  const deploymentReceipt = await contract.deploymentTransaction.wait(1);
+  const deploymentReceipt = await contract.deployTransaction.wait();
   console.log("Deployment Receipt = ", deploymentReceipt);
 
   const tx = {

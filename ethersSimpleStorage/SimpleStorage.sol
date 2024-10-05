@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.0;
+pragma solidity 0.8.19;
+
+// Important Note: https://ethereum.stackexchange.com/questions/152509/could-not-coalesce-error-invalid-opcode
+// To use VM who don't have PUSH0 we must use 0.8.19 solidity version
 
 contract SimpleStorage {
     uint256 favoriteNumber;
