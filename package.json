@@ -5,13 +5,13 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o out ethersSimpleStorage/SimpleStorage.sol"
+    "compile": "yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o out ethersSimpleStorage/FallbackExample.sol"
   },
   "author": "Shubham",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "ethers": "^5.4",
-    "solc": "^0.8.27"
+    "ethers": "^6.13.3",
+    "solc": "^0.8.26"
   }
 }
