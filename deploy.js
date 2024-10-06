@@ -26,20 +26,31 @@ async function main() {
   const contractFactory = new ContractFactory(abi, binary, wallet);
   console.log("Deploying...");
 
-  const contract = await contractFactory.deploy({ gasLimit: 5000000 }); // Wait for contract to deploy
-  console.log("Contract = ", contract);
+  // const contract = await contractFactory.deploy({ gasLimit: 5000000 }); // Wait for contract to deploy
+  // console.log("Contract = ", contract);
 
   // wait for one block to add during deployment
-  const deploymentReceipt = await contract.deployTransaction.wait();
-  console.log("Deployment Receipt = ", deploymentReceipt);
+  // const deploymentReceipt = await contract.deploymentTransaction().wait(1);
+  // console.log("Deployment Receipt = ", deploymentReceipt);
 
+  // Create Transaction and deploy contract with transaction data
+  const nonce = await wallet.getNonce();
   const tx = {
-    nonce: 9,
+    nonce,
     gasPrice: 2000000000,
-    gasLimit: 3000000,
+    gasLimit: 5000000,
     to: null,
-    valuse: 0,
+    value: 0,
+    data: `0x${binary}`, // Smart contract Binary
+    chainId: 1337, // Or 31337
   };
+
+  // const signedTxResponse = await wallet.signTransaction(tx);
+  // console.log("signed Tx response = ", signedTxResponse);
+
+  const sentTxResponse = await wallet.sendTransaction(tx);
+  await sentTxResponse.wait(1);
+  console.log("sent Tx response = ", sentTxResponse);
 }
 
 main()
