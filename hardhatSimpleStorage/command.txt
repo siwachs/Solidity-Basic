@@ -3,4 +3,7 @@ yarn init
 install hardhat
 yarn hardhat
 
-yarn hardhat run script/deploy.js
+yarn hardhat run script/deploy.js --network hardhat
+
+NOTE: Hardhat has its own local ETH network node.
+NOTE: To get chainlist https://chainlist.org
