@@ -6,3 +6,5 @@ yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o out Filena
 ganache -> VM to run a Fake BLC
 
 Ethers.js, Web3.js -> JS library to interact with ETH BLC
+
+Hardhat -> Ethereum development environment

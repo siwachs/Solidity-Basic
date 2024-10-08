@@ -1,4 +1,23 @@
-node_modules
-out
+/EthersJS/node_modules
+/EthersJS/out
 
-.env
+/EthersJS/.env
+
+/hardhatSimpleStorage/node_modules
+
+/hardhatSimpleStorage/.env
+
+# Hardhat files
+/hardhatSimpleStorage/cache
+/hardhatSimpleStorage/artifacts
+
+# TypeChain files
+/hardhatSimpleStorage/typechain
+/hardhatSimpleStorage/typechain-types
+
+# solidity-coverage files
+/hardhatSimpleStorage/coverage
+/hardhatSimpleStorage/coverage.json
+
+# Hardhat Ignition default folder for deployments against a local node
+/hardhatSimpleStorageignition/deployments/chain-31337

@@ -1,0 +1,6 @@
+To create Project:
+yarn init
+install hardhat
+yarn hardhat
+
+yarn hardhat run script/deploy.js

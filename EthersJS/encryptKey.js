@@ -1,11 +1,11 @@
-import { Wallet } from "ethers";
-import fs from "fs";
+// import { Wallet } from "ethers";
+// import fs from "fs";
 
 import dotenv from "dotenv";
 dotenv.config();
 
 async function main() {
-  const wallet = new Wallet(process.env.WALLET_PRIVATE_KEY);
+  // const wallet = new Wallet(process.env.WALLET_PRIVATE_KEY);
 }
 
 main()
